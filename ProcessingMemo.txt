@@ -1,0 +1,22 @@
+toxiclibscore/grometry/LennyExplorer
+PolarUnravel
+ProfilePathAlignment
+toxiclibscore/mapping/scalemapdata
+/math/AdditiveWaves
+/mesh/meshDoodle
+/splines/SmoothDoodle
+//SplineTightness
+verletphysics/Attraction2D
+/Shiffmann_ForceDirectedGraph
+/ThreadDemo
+volumeutils/VolumeBrush
+/VoxelizeMesh
+Minim Audio/AddListener
+/BandPassFilter
+/ForwardFFT
+/FrequencyEnergy
+/GetLineIn
+/GetMetaData
+/LoadFile
+/LoadSnippet
+/RecordLineIn
