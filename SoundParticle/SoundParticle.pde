@@ -12,6 +12,7 @@ Minim minim;
 AudioPlayer jingle;
 FFT fft;
 String windowName;
+int soundLevel;
 
 int counter;    // カウンタ
 PImage[]  tex;  // テクスチャ配列
@@ -29,8 +30,8 @@ void setup()
 
 	// Setting FFT
   minim = new Minim(this);
-//  jingle = minim.loadFile("RockTheBeat.mp3", 2048);
-  jingle = minim.loadFile("Season.mp3", 2048);
+  jingle = minim.loadFile("RockTheBeat.mp3", 2048);
+//  jingle = minim.loadFile("Season.mp3", 2048);
   jingle.loop();
   fft = new FFT(jingle.bufferSize(), jingle.sampleRate());
   windowName = "None";
@@ -60,8 +61,13 @@ void draw()
 	// perform a forward FFT on the samples in jingle's left buffer
   // note that if jingle were a MONO file, this would be the same as using jingle.right or jingle.left
   fft.forward(jingle.mix);
-//  fft.getBand(50);
-  
+
+	//Sam of Sound Level
+	soundLevel = 0;
+  for (int i = 0; i<fft.specSize(); i++){
+		soundLevel += fft.getBand(i);
+  }
+	
 	
   // カウンタ更新
   if (++counter >= NUM_PARTICLES) counter = 0;
@@ -94,10 +100,14 @@ void draw()
     }
 
     // 位置・速度更新
-			pos[i].x += fft.getBand(i)/5+vel[i].x;
-			pos[i].y += fft.getBand(i)/5+vel[i].y;
-    	vel[i].x += random(-0.1, 0.1);
-    	vel[i].y += random(-0.1, 0.1);
+			pos[i].x += sin(NUM_PARTICLES*i/PI)*soundLevel/700;
+			pos[i].y += cos(NUM_PARTICLES*i/PI)*soundLevel/700;
+			print(soundLevel);
+
+//			pos[i].x += fft.getBand(i)/5+vel[i].x;
+//			pos[i].y += fft.getBand(i)/5+vel[i].y;
+//    	vel[i].x += random(-0.1, 0.1);
+//    	vel[i].y += random(-0.1, 0.1);
   }
 }
 
