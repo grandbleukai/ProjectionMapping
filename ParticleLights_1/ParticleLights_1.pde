@@ -3,10 +3,11 @@ PImage[]  tex;  // テクスチャ配列
 PVector[] pos;  // パーティクル位置ベクトル
 PVector[] vel;  // パーティクル速度ベクトル
 
-final int   NUM_PARTICLES  = 360;  // パーティクル数
+final int   NUM_PARTICLES  = 300;  // パーティクル数
 final float ACCELERATION = 0.01;  // 加速度
 
 void setup() {
+  background(0);
   size(400, 300);
   tex = new PImage[NUM_PARTICLES];
   pos = new PVector[NUM_PARTICLES];
@@ -24,7 +25,8 @@ void setup() {
 
 void draw() {
   noStroke();
-  fill(0, 30);
+  fill(0, 10);
+  
   rect(0, 0, width, height);
   
   // カウンタ更新
@@ -42,8 +44,8 @@ void draw() {
     pos[counter].x = width/2 + random(-noiseAmount, noiseAmount);
     pos[counter].y = height * 9/10 + random(-noiseAmount, noiseAmount);
   } else {
-     pos[counter].x = mouseX + random(-noiseAmount, noiseAmount);
-     pos[counter].y = mouseY + random(-noiseAmount, noiseAmount);
+     pos[counter].x = mouseX;
+     pos[counter].y = mouseY;
   };
 
   

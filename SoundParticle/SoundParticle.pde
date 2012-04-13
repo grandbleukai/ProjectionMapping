@@ -30,8 +30,8 @@ void setup()
 
 	// Setting FFT
   minim = new Minim(this);
-  jingle = minim.loadFile("RockTheBeat.mp3", 2048);
-//  jingle = minim.loadFile("Season.mp3", 2048);
+//  jingle = minim.loadFile("RockTheBeat.mp3", 2048);
+  jingle = minim.loadFile("Season.mp3", 2048);
   jingle.loop();
   fft = new FFT(jingle.bufferSize(), jingle.sampleRate());
   windowName = "None";
@@ -102,7 +102,6 @@ void draw()
     // 位置・速度更新
 			pos[i].x += sin(NUM_PARTICLES*i/PI)*soundLevel/700;
 			pos[i].y += cos(NUM_PARTICLES*i/PI)*soundLevel/700;
-			print(soundLevel);
 
 //			pos[i].x += fft.getBand(i)/5+vel[i].x;
 //			pos[i].y += fft.getBand(i)/5+vel[i].y;
